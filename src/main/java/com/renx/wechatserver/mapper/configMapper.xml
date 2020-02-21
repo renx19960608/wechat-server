@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.renx.wechatserver.dao.ConfigMapper">
+    <select id="getConfigByWechatid" parameterType="java.lang.String" resultType="com.renx.wechatserver.model.WechatConfig">
+        select *from config where wechat_id=#{wechat_id}
+    </select>
+    <insert id="insertConfig" parameterType="com.renx.wechatserver.model.WechatConfig">
+        insert into config(id,secret,appid,wechat_id,token)
+          VALUES
+           (null,#{secret},#{appid},#{wechat_id},#{token})
+    </insert>
+    <update id="updateconfig" parameterType="com.renx.wechatserver.model.WechatConfig">
+        UPDATE config
+        <set>
+            <if test="secret !=null and secret!=''">
+                secret=#{secret}
+            </if>
+            <if test="appid !=null and appid!=''">
+                appid=#{appid}
+            </if>
+            <if test="token !=null and token!=''">
+                token=#{token}
+            </if>
+        </set>
+        WHERE
+          wechat_id=#{wechat_id}
+    </update>
+    <delete id="delconfg" parameterType="java.lang.String">
+       DELETE from config where wechat_id=#{wechat_id}
+    </delete>
+</mapper>

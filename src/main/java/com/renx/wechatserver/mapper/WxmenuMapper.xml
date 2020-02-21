@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.renx.wechatserver.dao.WxmenuMapper">
+    <resultMap id="BaseResultMap" type="com.renx.wechatserver.model.WechatMenu" >
+        <id column="menu_id" property="menuId" jdbcType="INTEGER" />
+        <result column="inner_appid" jdbcType="VARCHAR" property="innerAppid" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="menu_type" property="menuType" jdbcType="INTEGER" />
+        <result column="uri" property="uri" jdbcType="VARCHAR" />
+        <result column="level" property="level" jdbcType="INTEGER" />
+        <result column="icon_uri" property="iconUri" jdbcType="VARCHAR" />
+        <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        menu_id, inner_appid, name, menu_type, uri, level, icon_uri, parent_id, status
+    </sql>
+    <select id="selectByGTLevel" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List"/>
+        from wxmenu
+        where inner_appid=#{innerAppid,jdbcType=VARCHAR} AND level &gt;= #{level,jdbcType=INTEGER}
+    </select>
+</mapper>

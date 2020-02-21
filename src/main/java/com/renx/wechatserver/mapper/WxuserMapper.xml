@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.renx.wechatserver.dao.WxuserMapper">
+    <resultMap id="BaseResultMap" type="com.renx.wechatserver.model.Wxuser" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="user_id" property="userId" jdbcType="VARCHAR" />
+        <result column="inner_appid" property="innerAppid" jdbcType="VARCHAR" />
+        <result column="open_id" property="openId" jdbcType="VARCHAR" />
+        <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+        <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+        <result column="email_addr" property="emailAddr" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
+        <result column="gender" property="gender" jdbcType="VARCHAR" />
+        <result column="city" property="city" jdbcType="VARCHAR" />
+        <result column="province" property="province" jdbcType="VARCHAR" />
+        <result column="country" property="country" jdbcType="VARCHAR" />
+        <result column="avatar_url" property="avatarUrl" jdbcType="VARCHAR" />
+        <result column="cert_type" jdbcType="INTEGER" property="certType" />
+        <result column="cert_no" jdbcType="VARCHAR" property="certNo" />
+        <result column="union_id" property="unionId" jdbcType="VARCHAR" />
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+        <result column="modify_date" property="modifyDate" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, user_id, inner_appid, open_id, nick_name, login_name, user_name, mobile, email_addr,
+        password, address, gender, city, province, country, avatar_url, cert_type, cert_no, union_id, create_date,
+        modify_date
+    </sql>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+      DELETE from wxuser
+      where id=#{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.renx.wechatserver.model.Wxuser">
+        insert into wxuser (id, user_id, inner_appid,
+          open_id, nick_name, login_name,
+          user_name, mobile, email_addr,
+          password, address, gender,
+          city, province, country,
+          avatar_url, cert_type, cert_no, union_id, create_date,
+          modify_date)
+        values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=VARCHAR}, #{innerAppid,jdbcType=VARCHAR},
+          #{openId,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR},
+          #{userName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{emailAddr,jdbcType=VARCHAR},
+          #{password,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR},
+          #{city,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR},
+          #{avatarUrl,jdbcType=VARCHAR}, #{certType,jdbcType=INTEGER}, #{certNo,jdbcType=VARCHAR},
+          #{unionId,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{modifyDate,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.renx.wechatserver.model.Wxuser">
+         isert into wxuser
+         <trim prefix="(" suffix=")" suffixOverrides=",">
+             <if test="id != null" >
+                 id,
+             </if>
+             <if test="userId != null" >
+                 user_id,
+             </if>
+             <if test="innerAppid != null" >
+                 inner_appid,
+             </if>
+             <if test="openId != null" >
+                 open_id,
+             </if>
+             <if test="nickName != null" >
+                 nick_name,
+             </if>
+             <if test="loginName != null" >
+                 login_name,
+             </if>
+             <if test="userName != null" >
+                 user_name,
+             </if>
+             <if test="mobile != null" >
+                 mobile,
+             </if>
+             <if test="emailAddr != null" >
+                 email_addr,
+             </if>
+             <if test="password != null" >
+                 password,
+             </if>
+             <if test="address != null" >
+                 address,
+             </if>
+             <if test="gender != null" >
+                 gender,
+             </if>
+             <if test="city != null" >
+                 city,
+             </if>
+             <if test="province != null" >
+                 province,
+             </if>
+             <if test="country != null" >
+                 country,
+             </if>
+             <if test="avatarUrl != null" >
+                 avatar_url,
+             </if>
+             <if test="certType != null">
+                 cert_type,
+             </if>
+             <if test="certNo != null">
+                 cert_no,
+             </if>
+             <if test="unionId != null" >
+                 union_id,
+             </if>
+             <if test="createDate != null" >
+                 create_date,
+             </if>
+             <if test="modifyDate != null" >
+                 modify_date,
+             </if>
+         </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="id != null" >
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="userId != null" >
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="innerAppid != null" >
+                #{innerAppid,jdbcType=VARCHAR},
+            </if>
+            <if test="openId != null" >
+                #{openId,jdbcType=VARCHAR},
+            </if>
+            <if test="nickName != null" >
+                #{nickName,jdbcType=VARCHAR},
+            </if>
+            <if test="loginName != null" >
+                #{loginName,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null" >
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null" >
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="emailAddr != null" >
+                #{emailAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null" >
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null" >
+                #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null" >
+                #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="province != null" >
+                #{province,jdbcType=VARCHAR},
+            </if>
+            <if test="country != null" >
+                #{country,jdbcType=VARCHAR},
+            </if>
+            <if test="avatarUrl != null" >
+                #{avatarUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="certType != null">
+                #{certType,jdbcType=INTEGER},
+            </if>
+            <if test="certNo != null">
+                #{certNo,jdbcType=VARCHAR},
+            </if>
+            <if test="unionId != null" >
+                #{unionId,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null" >
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyDate != null" >
+                #{modifyDate,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from  wxuser
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <update id="updateByPrimaryKeySelective" parameterType="com.renx.wechatserver.model.Wxuser">
+        update wxuser
+        <set>
+            <if test="userId != null" >
+                user_id = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="innerAppid != null" >
+                inner_appid = #{innerAppid,jdbcType=VARCHAR},
+            </if>
+            <if test="openId != null" >
+                open_id = #{openId,jdbcType=VARCHAR},
+            </if>
+            <if test="nickName != null" >
+                nick_name = #{nickName,jdbcType=VARCHAR},
+            </if>
+            <if test="loginName != null" >
+                login_name = #{loginName,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null" >
+                user_name = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null" >
+                mobile = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="emailAddr != null" >
+                email_addr = #{emailAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null" >
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null" >
+                gender = #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null" >
+                city = #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="province != null" >
+                province = #{province,jdbcType=VARCHAR},
+            </if>
+            <if test="country != null" >
+                country = #{country,jdbcType=VARCHAR},
+            </if>
+            <if test="avatarUrl != null" >
+                avatar_url = #{avatarUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="certType != null">
+                cert_type = #{certType,jdbcType=INTEGER},
+            </if>
+            <if test="certNo != null">
+                cert_no = #{certNo,jdbcType=VARCHAR},
+            </if>
+            <if test="unionId != null" >
+                union_id = #{unionId,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null" >
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyDate != null" >
+                modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id=#{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.renx.wechatserver.model.Wxuser">
+        update wxuser SET
+          user_id = #{userId,jdbcType=VARCHAR},
+          inner_appid = #{innerAppid,jdbcType=VARCHAR},
+          open_id = #{openId,jdbcType=VARCHAR},
+          nick_name = #{nickName,jdbcType=VARCHAR},
+          login_name = #{loginName,jdbcType=VARCHAR},
+          user_name = #{userName,jdbcType=VARCHAR},
+          mobile = #{mobile,jdbcType=VARCHAR},
+          email_addr = #{emailAddr,jdbcType=VARCHAR},
+          password = #{password,jdbcType=VARCHAR},
+          address = #{address,jdbcType=VARCHAR},
+          gender = #{gender,jdbcType=VARCHAR},
+          city = #{city,jdbcType=VARCHAR},
+          province = #{province,jdbcType=VARCHAR},
+          country = #{country,jdbcType=VARCHAR},
+          avatar_url = #{avatarUrl,jdbcType=VARCHAR},
+          cert_type = #{certType,jdbcType=INTEGER},
+          cert_no = #{certNo,jdbcType=VARCHAR},
+          union_id = #{unionId,jdbcType=VARCHAR},
+          create_date = #{createDate,jdbcType=TIMESTAMP},
+          modify_date = #{modifyDate,jdbcType=TIMESTAMP}
+          WHERE
+          id=#{id,jdbcType=BIGINT}
+    </update>
+    <select id="selectOne" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from  wxuser
+        where inner_appid = #{innerAppid,jdbcType=VARCHAR}
+        AND open_id = #{openId,jdbcType=VARCHAR}
+        limit 1
+    </select>
+    <select id="findByIdNo" resultMap="BaseResultMap">
+      SELECT 
+      <include refid="Base_Column_List"/>
+        from  wxuser
+      where inner_appid = #{innerAppid,jdbcType=VARCHAR}
+      AND cert_type = 0
+      AND cert_no = #{idNo,jdbcType=VARCHAR}
+      limit 1
+    </select>
+</mapper>

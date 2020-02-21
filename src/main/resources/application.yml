@@ -1,0 +1,38 @@
+server:
+  port: 50070
+  context-path: /wechat-server
+spring:
+  application:
+    name: /wechat-server
+  datasource:
+    driver-class-name:  com.mysql.jdbc.Driver
+    username: root
+    password: a
+    url: jdbc:mysql://localhost:3306/wechat?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    type: com.alibaba.druid.pool.DruidDataSource
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+    connection-properties: druid.stat.merggSql=ture;druid.stat.slowSqlMillis=5000
+    filters: stat,wall,log4j
+    logSlowSql: true
+jedis:
+  pool:
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+    maxTotal: 100
+    maxIdle: 5
+    maxWaitMillis: -1
+common:
+  domain: renx-123.ngrok2.xiaomiqiu.cn #外网服务器域名&端口，如果没有域名则配置为空！！！
+  wechat_id: renx #公众号配置信息记录id
